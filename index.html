@@ -3,8 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="PC Specialist — servicii IT, reparații calculatoare și laptopuri, instalări, optimizare și suport tehnic.">
-  <title>PC Specialist | Service și suport IT</title>
+  <meta name="description" content="PC Specialist București — servicii IT, reparații calculatoare și laptopuri, instalări Windows, optimizare și suport tehnic.">
+  <meta name="theme-color" content="#071a33">
+  <title>PC Specialist București | Service și suport IT</title>
   <style>
     :root {
       --ink: #101828;
@@ -24,11 +25,14 @@
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
+      overflow-x: hidden;
       color: var(--ink);
       background: var(--white);
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
     }
+
+    body::selection { color: var(--white); background: var(--blue); }
 
     a { color: inherit; text-decoration: none; }
     button, a { -webkit-tap-highlight-color: transparent; }
@@ -42,6 +46,20 @@
       border-bottom: 1px solid rgba(223,229,236,0.85);
       backdrop-filter: blur(14px);
     }
+
+    .service-strip {
+      color: #d9e7f8;
+      background: var(--navy);
+      font-size: .88rem;
+    }
+    .service-strip .container {
+      min-height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .service-strip strong { color: #86f3dd; }
 
     .nav {
       min-height: 74px;
@@ -77,6 +95,18 @@
         radial-gradient(circle at 82% 16%, rgba(23,183,200,.16), transparent 28%),
         linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
     }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: .42;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(18,104,232,.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(18,104,232,.055) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 78%);
+    }
     .hero::after {
       content: "";
       position: absolute;
@@ -87,7 +117,8 @@
       border: 70px solid rgba(18,104,232,.06);
       border-radius: 50%;
     }
-    .hero-grid { display: grid; grid-template-columns: 1.08fr .92fr; align-items: center; gap: 70px; }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr); align-items: center; gap: 70px; }
+    .hero-copy, .diagnostic-card { position: relative; z-index: 1; min-width: 0; }
     .eyebrow { margin: 0 0 16px; color: var(--blue); font-weight: 800; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; }
     h1 { margin: 0; max-width: 780px; font-size: clamp(2.7rem, 6vw, 5rem); line-height: 1.02; letter-spacing: -.055em; }
     h1 span { color: var(--blue); }
@@ -101,6 +132,22 @@
     .hero-note { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 28px; color: #475467; font-size: .92rem; }
     .hero-note span::before { content: "✓"; margin-right: 7px; color: var(--cyan); font-weight: 900; }
 
+    .location-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 18px;
+      padding: 8px 13px;
+      color: #19416f;
+      border: 1px solid #cfe0f5;
+      border-radius: 999px;
+      background: rgba(255,255,255,.82);
+      font-size: .9rem;
+      font-weight: 750;
+      box-shadow: 0 8px 24px rgba(7,26,51,.06);
+    }
+    .location-pill::before { content: "●"; color: var(--cyan); font-size: .68rem; }
+
     .diagnostic-card {
       position: relative;
       padding: 28px;
@@ -108,6 +155,17 @@
       border-radius: 28px;
       background: var(--navy);
       box-shadow: var(--shadow);
+      transform: perspective(900px) rotateY(-3deg) rotateX(1deg);
+    }
+    .diagnostic-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      z-index: -1;
+      border-radius: inherit;
+      background: linear-gradient(145deg, rgba(52,168,255,.7), transparent 35%, rgba(23,183,200,.45));
+      filter: blur(13px);
+      opacity: .42;
     }
     .screen { padding: 25px; border: 1px solid rgba(255,255,255,.12); border-radius: 18px; background: rgba(255,255,255,.05); }
     .screen-top { display: flex; align-items: center; gap: 7px; padding-bottom: 18px; border-bottom: 1px solid rgba(255,255,255,.1); }
@@ -115,7 +173,7 @@
     .dot:nth-child(2) { background: #ffd166; }
     .dot:nth-child(3) { background: #22c55e; }
     .status { display: grid; gap: 16px; margin-top: 22px; }
-    .status-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; align-items: center; }
+    .status-row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; }
     .status-label { color: #c5d2e4; font-size: .92rem; }
     .status-value { color: #80f0d5; font-weight: 750; font-size: .9rem; }
     .bar { grid-column: 1 / -1; height: 8px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.09); }
@@ -146,14 +204,48 @@
     .step h3 { margin: 0; font-size: 1.12rem; }
     .step p { margin: 6px 0 0; color: var(--muted); }
 
-    .contact-wrap { display: grid; grid-template-columns: 1fr .9fr; gap: 50px; padding: 54px; color: var(--white); border-radius: 30px; background: var(--navy); }
+    .contact-wrap {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr .9fr;
+      gap: 50px;
+      padding: 58px;
+      color: var(--white);
+      border-radius: 30px;
+      background:
+        radial-gradient(circle at 90% 10%, rgba(23,183,200,.28), transparent 32%),
+        linear-gradient(145deg, #071a33, #0b2850);
+      box-shadow: 0 28px 70px rgba(7,26,51,.18);
+    }
     .contact-wrap h2 { margin: 0; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.08; letter-spacing: -.045em; }
     .contact-wrap p { color: #b8c6d9; }
     .contact-details { display: grid; gap: 14px; align-content: center; }
-    .contact-item { padding: 18px 20px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: rgba(255,255,255,.05); }
+    .contact-item { display: block; padding: 18px 20px; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; background: rgba(255,255,255,.06); transition: .2s ease; }
+    a.contact-item:hover { transform: translateX(5px); border-color: rgba(128,240,213,.55); background: rgba(255,255,255,.1); }
     .contact-item small { display: block; color: #8fa3bd; text-transform: uppercase; letter-spacing: .08em; }
     .contact-item strong { display: block; margin-top: 4px; font-size: 1.05rem; }
-    .placeholder { color: #ffd166; }
+    .contact-value { color: var(--white); }
+    .contact-hint { margin-top: 20px; color: #8fa3bd; font-size: .9rem; }
+
+    .floating-call {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 30;
+      display: none;
+      align-items: center;
+      gap: 9px;
+      min-height: 52px;
+      padding: 0 18px;
+      color: var(--white);
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 16px 38px rgba(18,104,232,.35);
+      font-weight: 800;
+    }
+
+    .reveal { opacity: 1; transform: none; }
 
     footer { padding: 28px 0 38px; color: #667085; font-size: .92rem; }
     .footer-row { display: flex; justify-content: space-between; gap: 20px; border-top: 1px solid var(--line); padding-top: 26px; }
@@ -165,21 +257,50 @@
       .hero-grid { gap: 44px; }
       .card-grid { grid-template-columns: repeat(2, 1fr); }
       .contact-wrap { padding: 36px; }
+      .diagnostic-card { transform: none; }
     }
 
     @media (max-width: 580px) {
-      .container { width: min(100% - 28px, 1120px); }
+      .container { width: min(1120px, calc(100% - 28px)); }
       .brand span:last-child { font-size: 1rem; }
       .nav-cta { padding: 9px 12px; }
+      h1 { font-size: clamp(2.45rem, 12vw, 3.1rem); overflow-wrap: break-word; }
+      .hero-copy > p:not(.eyebrow) { font-size: 1.03rem; }
+      .hero-grid, .hero-copy, .diagnostic-card, .screen, .status, .status-row { min-width: 0; max-width: 100%; }
+      .diagnostic-card { width: 100%; overflow: hidden; }
+      .screen { padding: 18px; }
+      .status-label, .status-value { font-size: .84rem; }
       .card-grid { grid-template-columns: 1fr; }
       section { padding: 68px 0; }
       .diagnostic-card { padding: 17px; }
       .contact-wrap { padding: 28px 22px; }
+      .contact-value { overflow-wrap: anywhere; }
       .footer-row { flex-direction: column; }
+      .floating-call { right: 14px; bottom: 14px; display: inline-flex; }
+      .service-strip .container { min-height: 42px; flex-wrap: wrap; gap: 6px; padding-block: 7px; text-align: center; font-size: .8rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation: none !important; transition: none !important; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ComputerStore",
+    "name": "PC Specialist",
+    "url": "https://pcspecialist.vercel.app",
+    "telephone": "+40768515472",
+    "email": "x3spre10@gmail.com",
+    "areaServed": "București, România"
+  }
+  </script>
 </head>
 <body>
+  <div class="service-strip">
+    <div class="container"><strong>Service IT în București</strong><span>•</span><span>Telefon 0768 515 472</span></div>
+  </div>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#acasa" aria-label="PC Specialist - Acasă">
@@ -189,7 +310,7 @@
       <nav class="nav-links" aria-label="Navigație principală">
         <a href="#servicii">Servicii</a>
         <a href="#cum-lucram">Cum lucrăm</a>
-        <a class="nav-cta" href="#contact">Contact</a>
+        <a class="nav-cta" href="tel:+40768515472">Sună acum</a>
       </nav>
     </div>
   </header>
@@ -198,11 +319,12 @@
     <section class="hero" id="acasa">
       <div class="container hero-grid">
         <div class="hero-copy">
+          <div class="location-pill">Disponibil în București</div>
           <p class="eyebrow">Service & suport IT</p>
           <h1>Tehnologia ta, din nou <span>în formă.</span></h1>
           <p>Diagnosticare, reparații și optimizare pentru calculatoare și laptopuri. Explicații clare, soluții potrivite și ajutor tehnic fără complicații.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#contact">Solicită o evaluare</a>
+            <a class="button button-primary" href="tel:+40768515472">Sună: 0768 515 472</a>
             <a class="button button-secondary" href="#servicii">Vezi serviciile</a>
           </div>
           <div class="hero-note">
@@ -233,7 +355,7 @@
       </div>
     </section>
 
-    <section class="services" id="servicii">
+    <section class="services reveal" id="servicii">
       <div class="container">
         <div class="section-heading">
           <p class="eyebrow">Cu ce te putem ajuta</p>
@@ -251,7 +373,7 @@
       </div>
     </section>
 
-    <section id="cum-lucram">
+    <section class="reveal" id="cum-lucram">
       <div class="container process-grid">
         <div class="promise">
           <h3>Fără surprize inutile</h3>
@@ -276,17 +398,22 @@
       </div>
     </section>
 
-    <section id="contact">
+    <section class="reveal" id="contact">
       <div class="container contact-wrap">
         <div>
           <p class="eyebrow" style="color:#80f0d5">Contact</p>
           <h2>Ai o problemă tehnică?</h2>
-          <p>Completează datele reale de contact înainte de publicarea oficială, apoi clienții te vor putea găsi ușor.</p>
+          <p>Sună sau trimite un e-mail și descrie pe scurt problema. Serviciile sunt disponibile în București.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="tel:+40768515472">Apelează acum</a>
+            <a class="button button-secondary" style="color:#fff;background:transparent;border-color:rgba(255,255,255,.25)" href="mailto:x3spre10@gmail.com">Trimite e-mail</a>
+          </div>
         </div>
         <div class="contact-details">
-          <div class="contact-item"><small>Telefon</small><strong class="placeholder">DE COMPLETAT</strong></div>
-          <div class="contact-item"><small>E-mail</small><strong class="placeholder">DE COMPLETAT</strong></div>
-          <div class="contact-item"><small>Localitate / zonă</small><strong class="placeholder">DE COMPLETAT</strong></div>
+          <a class="contact-item" href="tel:+40768515472"><small>Telefon</small><strong class="contact-value">0768 515 472</strong></a>
+          <a class="contact-item" href="mailto:x3spre10@gmail.com"><small>E-mail</small><strong class="contact-value">x3spre10@gmail.com</strong></a>
+          <div class="contact-item"><small>Zonă deservită</small><strong class="contact-value">București</strong></div>
+          <div class="contact-hint">Apasă pe telefon sau e-mail pentru contact direct.</div>
         </div>
       </div>
     </section>
@@ -298,6 +425,8 @@
       <span>Service și suport IT</span>
     </div>
   </footer>
+
+  <a class="floating-call" href="tel:+40768515472" aria-label="Sună PC Specialist">☎ Sună acum</a>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
