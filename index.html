@@ -8,13 +8,13 @@
   <title>PC Specialist București | Service IT</title>
   <style>
     :root {
-      --navy: #142033;
-      --blue: #245fce;
-      --blue-dark: #184aa7;
-      --text: #26354a;
-      --muted: #66758a;
-      --line: #dfe5ec;
-      --surface: #f5f7fa;
+      --navy: #171a1d;
+      --blue: #176b5b;
+      --blue-dark: #105247;
+      --text: #30363b;
+      --muted: #687177;
+      --line: #e1e4e3;
+      --surface: #f4f6f5;
       --white: #ffffff;
       --max: 1120px;
       --radius: 18px;
@@ -55,7 +55,7 @@
       height: 37px;
       display: grid;
       place-items: center;
-      border-radius: 10px;
+      border-radius: 50%;
       color: var(--white);
       background: var(--navy);
       font-size: .78rem;
@@ -63,10 +63,10 @@
     }
     .nav-links { display: flex; align-items: center; gap: 28px; color: #45556b; font-size: .92rem; font-weight: 650; }
     .nav-links a:hover { color: var(--blue); }
-    .nav-contact { padding: 10px 15px; border: 1px solid var(--line); border-radius: 10px; color: var(--navy); background: var(--white); }
+    .nav-contact { padding: 10px 17px; border-radius: 999px; color: var(--white); background: var(--navy); }
 
-    .hero { padding: 104px 0 92px; background: linear-gradient(180deg, #fff 0%, #f8fafc 100%); }
-    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(350px, .95fr); align-items: center; gap: 84px; }
+    .hero { padding: 112px 0 104px; background: var(--white); }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(360px, .95fr); align-items: center; gap: 92px; }
     .eyebrow {
       margin: 0 0 18px;
       color: var(--blue);
@@ -79,9 +79,9 @@
     h1 {
       max-width: 670px;
       margin: 0;
-      font-size: clamp(2.8rem, 5.4vw, 4.65rem);
-      font-weight: 720;
-      line-height: 1.04;
+      font-size: clamp(2.8rem, 5vw, 4.4rem);
+      font-weight: 680;
+      line-height: 1.03;
       letter-spacing: -.055em;
     }
     .hero-lead { max-width: 620px; margin: 25px 0 0; color: var(--muted); font-size: 1.12rem; }
@@ -93,7 +93,7 @@
       justify-content: center;
       padding: 0 20px;
       border: 1px solid var(--line);
-      border-radius: 10px;
+      border-radius: 999px;
       color: var(--navy);
       background: var(--white);
       font-weight: 720;
@@ -104,35 +104,34 @@
     .button-primary:hover { border-color: var(--blue-dark); background: var(--blue-dark); }
     .hero-note { margin: 18px 0 0; color: #768499; font-size: .9rem; }
 
-    .diagnostic {
+    .hero-art {
       position: relative;
-      padding: 30px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: var(--white);
-      box-shadow: 0 24px 60px rgba(27, 45, 72, .1);
+      min-height: 470px;
+      overflow: hidden;
+      margin: 0;
+      border-radius: 30px;
+      color: var(--white);
+      background: #1a1e20;
+      isolation: isolate;
     }
-    .diagnostic::before {
+    .hero-art::before {
       content: "";
       position: absolute;
-      inset: -20px 30px auto -20px;
-      height: 70%;
+      width: 430px;
+      height: 430px;
+      right: -165px;
+      top: -145px;
       z-index: -1;
-      border-radius: 28px;
-      background: #e9f0fb;
+      border-radius: 50%;
+      background: #82b7a9;
     }
-    .diagnostic-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-bottom: 22px; border-bottom: 1px solid var(--line); }
-    .diagnostic-title { display: flex; align-items: center; gap: 10px; color: var(--navy); font-weight: 720; }
-    .status-dot { width: 9px; height: 9px; border-radius: 50%; background: #2c8b65; }
-    .diagnostic-head small { color: var(--muted); }
-    .check-list { display: grid; gap: 18px; padding: 24px 0 4px; }
-    .check { display: grid; grid-template-columns: 1fr auto; gap: 14px; align-items: center; }
-    .check span { color: #44556c; }
-    .check strong { color: #267456; font-size: .9rem; }
-    .bar { grid-column: 1 / -1; height: 6px; overflow: hidden; border-radius: 99px; background: #e8edf3; }
-    .bar::after { content: ""; display: block; width: var(--progress); height: 100%; border-radius: inherit; background: var(--blue); }
+    .hero-art::after { content: ""; position: absolute; inset: 38px; z-index: -1; border: 1px solid rgba(255,255,255,.16); border-radius: 20px; }
+    .art-word { position: absolute; left: 40px; top: 52px; color: rgba(255,255,255,.92); font-size: clamp(6rem, 12vw, 10.5rem); font-weight: 680; line-height: .8; letter-spacing: -.09em; }
+    .art-lines { position: absolute; left: 42px; right: 42px; bottom: 40px; display: grid; gap: 12px; }
+    .art-lines span { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,.2); color: rgba(255,255,255,.72); font-size: .87rem; }
+    .art-lines strong { color: var(--white); font-weight: 650; }
 
-    .trust { border-block: 1px solid var(--line); background: var(--white); }
+    .trust { border-block: 1px solid var(--line); background: #fafbfa; }
     .trust-row { min-height: 84px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; }
     .trust-item { padding: 6px 28px; border-right: 1px solid var(--line); }
     .trust-item:first-child { padding-left: 0; }
@@ -153,32 +152,21 @@
     .service-list { border-top: 1px solid var(--line); }
     .service-row {
       display: grid;
-      grid-template-columns: 52px minmax(0, .8fr) minmax(280px, 1.2fr);
-      gap: 28px;
+      grid-template-columns: minmax(0, .85fr) minmax(280px, 1.15fr);
+      gap: 54px;
       align-items: start;
       padding: 29px 0;
       border-bottom: 1px solid var(--line);
     }
-    .service-icon {
-      width: 42px;
-      height: 42px;
-      display: grid;
-      place-items: center;
-      border-radius: 11px;
-      color: var(--blue);
-      background: #edf3fc;
-      font-size: .78rem;
-      font-weight: 800;
-    }
-    .service-row h3 { margin: 6px 0 0; font-size: 1.15rem; letter-spacing: -.02em; }
+    .service-row h3 { margin: 0; font-size: 1.16rem; letter-spacing: -.02em; }
     .service-row p { margin: 5px 0 0; color: var(--muted); }
 
     .process { padding: 105px 0; background: var(--surface); }
     .process-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 90px; align-items: start; }
     .process-copy { max-width: 430px; }
     .steps { border-top: 1px solid #d8e0e9; }
-    .step { display: grid; grid-template-columns: 44px 1fr; gap: 20px; padding: 25px 0; border-bottom: 1px solid #d8e0e9; }
-    .step-number { color: var(--blue); font-size: .86rem; font-weight: 800; }
+    .step { display: grid; grid-template-columns: 105px 1fr; gap: 24px; padding: 25px 0; border-bottom: 1px solid #d8e0e9; }
+    .step-number { color: var(--blue); font-size: .8rem; font-weight: 760; letter-spacing: .05em; text-transform: uppercase; }
     .step h3 { margin: 0; font-size: 1.12rem; }
     .step p { margin: 6px 0 0; color: var(--muted); font-size: .95rem; }
 
@@ -188,16 +176,21 @@
       grid-template-columns: 1.05fr .95fr;
       gap: 70px;
       padding: 58px;
-      border: 1px solid var(--line);
+      border: 0;
       border-radius: var(--radius);
-      background: var(--white);
-      box-shadow: 0 20px 50px rgba(27, 45, 72, .07);
+      color: rgba(255,255,255,.74);
+      background: var(--navy);
     }
+    .contact-card h2 { color: var(--white); }
+    .contact-card .eyebrow { color: #8fc5b8; }
+    .contact-copy > p { color: rgba(255,255,255,.65); }
+    .contact-card .button-primary { color: var(--navy); border-color: var(--white); background: var(--white); }
+    .contact-card .button:not(.button-primary) { color: var(--white); border-color: rgba(255,255,255,.24); background: transparent; }
     .contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
-    .contact-details { align-self: center; border-top: 1px solid var(--line); }
-    .contact-line { display: block; padding: 18px 0; border-bottom: 1px solid var(--line); }
-    .contact-line small { display: block; color: var(--muted); font-size: .75rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
-    .contact-line strong { display: block; margin-top: 4px; color: var(--navy); font-size: 1.05rem; overflow-wrap: anywhere; }
+    .contact-details { align-self: center; border-top: 1px solid rgba(255,255,255,.18); }
+    .contact-line { display: block; padding: 18px 0; border-bottom: 1px solid rgba(255,255,255,.18); }
+    .contact-line small { display: block; color: rgba(255,255,255,.5); font-size: .75rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; }
+    .contact-line strong { display: block; margin-top: 4px; color: var(--white); font-size: 1.05rem; overflow-wrap: anywhere; }
 
     footer { padding: 28px 0 40px; color: var(--muted); font-size: .88rem; }
     .footer-row { display: flex; justify-content: space-between; gap: 24px; padding-top: 28px; border-top: 1px solid var(--line); }
@@ -222,7 +215,7 @@
       .hero-grid, .process-grid, .contact-card { grid-template-columns: 1fr; }
       .hero-grid { gap: 60px; }
       .process-grid, .contact-card { gap: 48px; }
-      .diagnostic { max-width: 580px; }
+      .hero-art { max-width: 580px; }
     }
     @media (max-width: 680px) {
       .container { width: min(var(--max), calc(100% - 28px)); }
@@ -233,14 +226,13 @@
       .hero-grid { gap: 48px; }
       h1 { font-size: clamp(2.55rem, 12vw, 3.7rem); }
       .hero-lead { font-size: 1rem; }
-      .diagnostic { padding: 22px; }
+      .hero-art { min-height: 400px; }
       .trust-row { grid-template-columns: 1fr; padding: 14px 0; }
       .trust-item, .trust-item:first-child, .trust-item:last-child { padding: 14px 0; border-right: 0; border-bottom: 1px solid var(--line); }
       .trust-item:last-child { border-bottom: 0; }
       .services, .contact { padding: 82px 0; }
       .process { padding: 82px 0; }
-      .service-row { grid-template-columns: 46px 1fr; gap: 16px; }
-      .service-row p { grid-column: 2; margin-top: -8px; }
+      .service-row { grid-template-columns: 1fr; gap: 6px; }
       .contact-card { padding: 30px 22px; }
       .footer-row { flex-direction: column; }
       .floating-call { display: inline-flex; }
@@ -278,17 +270,14 @@
           <p class="hero-note">Disponibil pentru clienți din București.</p>
         </div>
 
-        <div class="diagnostic" aria-label="Exemplu vizual de verificare a sistemului">
-          <div class="diagnostic-head">
-            <div class="diagnostic-title"><span class="status-dot"></span><span>Verificare sistem</span></div>
-            <small>PC Specialist</small>
-          </div>
-          <div class="check-list">
-            <div class="check"><span>Diagnosticare</span><strong>Finalizată</strong><div class="bar" style="--progress:100%"></div></div>
-            <div class="check"><span>Performanță</span><strong>Optimizată</strong><div class="bar" style="--progress:88%"></div></div>
-            <div class="check"><span>Securitate</span><strong>Verificată</strong><div class="bar" style="--progress:94%"></div></div>
-          </div>
-        </div>
+        <figure class="hero-art" aria-label="Compoziție grafică PC Specialist">
+          <div class="art-word">PC</div>
+          <figcaption class="art-lines">
+            <span><strong>Diagnosticare</strong> Identificăm cauza</span>
+            <span><strong>Upgrade</strong> Îmbunătățim ce contează</span>
+            <span><strong>Reparații</strong> Testăm înainte de predare</span>
+          </figcaption>
+        </figure>
       </div>
     </section>
 
@@ -309,10 +298,10 @@
         </div>
 
         <div class="service-list">
-          <article class="service-row"><div class="service-icon">01</div><h3>Diagnosticare și reparații</h3><p>Identificarea problemelor hardware sau software și prezentarea opțiunilor înainte de intervenție.</p></article>
-          <article class="service-row"><div class="service-icon">02</div><h3>Upgrade și optimizare</h3><p>SSD, memorie RAM, curățare software și configurări pentru un sistem mai rapid și mai stabil.</p></article>
-          <article class="service-row"><div class="service-icon">03</div><h3>Windows și drivere</h3><p>Instalare și configurare curată, actualizări și drivere potrivite pentru calculatorul tău.</p></article>
-          <article class="service-row"><div class="service-icon">04</div><h3>Rețea, securitate și backup</h3><p>Wi-Fi, actualizări, verificări de securitate și recomandări pentru protejarea fișierelor importante.</p></article>
+          <article class="service-row"><h3>Diagnosticare și reparații</h3><p>Identificarea problemelor hardware sau software și prezentarea opțiunilor înainte de intervenție.</p></article>
+          <article class="service-row"><h3>Upgrade și optimizare</h3><p>SSD, memorie RAM, curățare software și configurări pentru un sistem mai rapid și mai stabil.</p></article>
+          <article class="service-row"><h3>Windows și drivere</h3><p>Instalare și configurare curată, actualizări și drivere potrivite pentru calculatorul tău.</p></article>
+          <article class="service-row"><h3>Rețea, securitate și backup</h3><p>Wi-Fi, actualizări, verificări de securitate și recomandări pentru protejarea fișierelor importante.</p></article>
         </div>
       </div>
     </section>
@@ -325,9 +314,9 @@
           <p>Fără promisiuni exagerate. Verificăm, explicăm și intervenim după ce direcția este clară.</p>
         </div>
         <div class="steps">
-          <article class="step"><span class="step-number">01</span><div><h3>Ne descrii problema</h3><p>Telefonic sau prin e-mail, ne spui ce se întâmplă și cum folosești sistemul.</p></div></article>
-          <article class="step"><span class="step-number">02</span><div><h3>Verificăm și recomandăm</h3><p>Identificăm cauza și îți explicăm opțiunile potrivite.</p></div></article>
-          <article class="step"><span class="step-number">03</span><div><h3>Rezolvăm și testăm</h3><p>Facem intervenția stabilită și verificăm funcționarea înainte de predare.</p></div></article>
+          <article class="step"><span class="step-number">Primul pas</span><div><h3>Ne descrii problema</h3><p>Telefonic sau prin e-mail, ne spui ce se întâmplă și cum folosești sistemul.</p></div></article>
+          <article class="step"><span class="step-number">Apoi</span><div><h3>Verificăm și recomandăm</h3><p>Identificăm cauza și îți explicăm opțiunile potrivite.</p></div></article>
+          <article class="step"><span class="step-number">La final</span><div><h3>Rezolvăm și testăm</h3><p>Facem intervenția stabilită și verificăm funcționarea înainte de predare.</p></div></article>
         </div>
       </div>
     </section>
